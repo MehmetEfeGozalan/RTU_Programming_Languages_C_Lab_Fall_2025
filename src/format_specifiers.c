@@ -13,7 +13,7 @@ int main(void) {
 
     printf("=== printf demo ===\\n");
     printf("int (%%d): %d\\n", i);
-    printf("unsigned (%%u): %u\\n", u);
+    printf("unsigneD (%%u): %u\\n", u);
     printf("hex (%%x): %x\\n", hex);
     printf("octal (%%o): %o\\n", hex);
     printf("char (%%c): %c\\n", c);
