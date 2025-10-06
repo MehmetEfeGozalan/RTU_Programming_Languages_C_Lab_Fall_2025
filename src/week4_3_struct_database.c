@@ -13,7 +13,11 @@
 #include <string.h>
 
 // TODO: Define struct Student with fields name, id, grade
-
+struct Student {
+    char name[50]; 
+    int id;
+    float grade;
+};
 int main(void) {
     int n;
     struct Student *students = NULL;
@@ -23,7 +27,35 @@ int main(void) {
         printf("Invalid number.\n");
         return 1;
     }
-
+    students = (struct Student *)malloc(n * sizeof(struct Student));
+    for (int i = 0; i < n; i++) {
+        printf("\nEnter information for student number %d:\n", i + 1);
+        printf("name: ");
+        scanf("%s", students[i].name); 
+        printf("id: ");
+        scanf("%d", &students[i].id);
+        printf("grade: ");
+        scanf("%f", &students[i].grade);
+    }
+    printf("Here are informations about the students= \n ");
+    for (int i = 0; i < n; i++) {
+        printf("%d) Name: %s | ID: %d | Grade: %.2f\n",
+               i + 1, students[i].name, students[i].id, students[i].grade);
+    }
+    double sum=0.0;
+    for (int i = 0; i < n; i++) {
+        sum+=students[i].grade;
+    }
+    int top=1;
+    for (int i = 0; i < n-1; i++) {
+        if (students[i].grade<students[i+1].grade){
+            top=i+1;
+        }
+    }
+    sum/=n;
+    printf("\nAverage grade: %.2f\n", sum / n);
+    printf("Top student: %s (ID: %d) with grade %.2f\n",students[top].name, students[top].id, students[top].grade);
+    free(students);
     // TODO: Allocate memory for n Student structs using malloc
 
     // TODO: Read student data in a loop
